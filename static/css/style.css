@@ -1,0 +1,94 @@
+.sidebar .category{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.sidebar .category .active{
+    background-color: black;
+    border-color: black;
+}
+
+.sidebar .category .badge{
+    margin-left: 50px;
+}
+
+.post .card{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.post .card .post-meta {
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+			justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.post .card .post-meta i{
+    margin-right: 10px;
+}
+
+.post .card .card-body h5{
+    margin-top: 30px;
+}
+
+.post .card .card-body p{
+    margin-top: 30px;
+}
+
+.post .card .card-body button{
+    margin-top: 10px;
+}
+
+.recent-post{
+    margin-bottom: 50px;
+}
+
+.recent-post .img-p{
+    display: flex;
+    padding-bottom: 10pt;
+}
+
+.recent-post h2{
+    font-size: 20px;
+    padding-left: 10pt;
+    padding-top: 10pt;
+}
+
+.recent-post img{
+    width: 60;
+    height: 48;
+    padding-left: 10pt;
+    padding-top: 10pt;
+}
+
+.recent-post p{
+    width: 60;
+    height: 48;
+    padding-left: 10pt;
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+}
+
+.category-tag{
+    margin-bottom: 50px;
+}
+
+.category-tag h2{
+    font-size: 20px;
+    padding-left: 10pt;
+    padding-top: 10pt;
+}
+
+.category-tag .button-cuz{
+    padding-left: 10pt;
+    padding-top: 10pt;
+}
+
+.category-tag .button-cuz button{
+    margin-right: 10pt;
+    margin-bottom: 10pt;
+}
