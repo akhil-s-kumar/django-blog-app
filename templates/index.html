@@ -28,7 +28,7 @@
         <div class="col-lg-8 post">
           {% for post in posts %}
           <div class="card">
-            <img src="images/b2.jpg" class="card-img-top" alt="...">
+            <img src="{{post.img.url}}" class="card-img-top" alt="...">
             <div class="card-body">
               <ul class="post-meta" style="list-style-type: none; padding-left: 0px;">
                 <li><i class="fa fa-tag"></i><a>{{post.category}}</a></li>
@@ -70,7 +70,7 @@
             <h2>Recent Posts</h2>
             {% for post in latestpost_list %}
             <div class="img-p">
-              <img src="images/s1.jpg">
+              <img style="width:100px; height:80px" src="{{post.img.url}}">
               <p>{{post.title}}</p>
             </div>
             {% endfor %}
