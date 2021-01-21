@@ -55,9 +55,9 @@
           <ul class="list-group category">
             <li class="list-group-item active" aria-current="true">Category</li>
             {% for categories in cat_list %}
-            <li class="list-group-item">{{categories}} <span class="badge bg-dark">{{categories.category_set.count}}</span></li>
+            <a href="{% url 'category' categories %}" style="text-decoration:none; color:black"><li class="list-group-item">{{categories}} <span class="badge bg-dark">{{categories.category_set.count}}</span></li></a>
             {% endfor %}
-          </ul>
+          </ul>/search?page=2
           <div class="recent-post card">
             <h2>Recent Posts</h2>
             {% for post in latestpost_list %}
@@ -71,7 +71,7 @@
             <h2>Category Tags</h2>
             <div class="button-cuz">
               {% for categories in cat_list %}
-              <button type="button" class="btn btn-outline-dark">{{categories}}</button>
+              <a href="{% url 'category' categories %}"><button type="button" class="btn btn-outline-dark">{{categories}}</button></a>
               {% endfor %}
             </div>
           </div>
