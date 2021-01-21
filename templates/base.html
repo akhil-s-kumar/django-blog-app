@@ -1,0 +1,102 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Blog App</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand">Django Blog</a>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 post">
+          {% block content %}
+          {% endblock %}
+          <nav aria-label="...">
+            <ul class="pagination">
+							{% if is_paginated %}
+								{% if page_obj.has_previous %}
+									<li class="page-item"><a class="page-link" style="color:black" href="?page=1"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+									<li class="page-item"><a class="page-link" style="color:black" href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+								{% endif %}
+								{% for num in page_obj.paginator.page_range %}
+									{% if num == page_obj.number %}
+										<li class="page-item active"><a class="page-link" style="color:#ffffff; background-color: black; border-color: black;" href="?page={{num}}">{{num}}</a></li>
+									{% elif num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
+										<li class="page-item"><a class="page-link" style="color:black" href="?page={{num}}">{{num}}</a></li>
+									{% endif %}
+								{% endfor %}
+								{% if page_obj.has_next %}
+									<li class="page-item"><a class="page-link" style="color:black" href="?page={{page_obj.next_page_number}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+									<li class="page-item"><a class="page-link" style="color:black" href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+								{% endif %}
+							{% endif %}
+						</ul>
+          </nav>
+
+        </div>
+        <div class="col-lg-4 sidebar">
+          <ul class="list-group category">
+            <li class="list-group-item active" aria-current="true">Category</li>
+            {% for categories in cat_list %}
+            <li class="list-group-item">{{categories}} <span class="badge bg-dark">{{categories.category_set.count}}</span></li>
+            {% endfor %}
+          </ul>
+          <div class="recent-post card">
+            <h2>Recent Posts</h2>
+            {% for post in latestpost_list %}
+            <div class="img-p">
+              <img style="width:100px; height:80px" src="{{post.img.url}}">
+              <p>{{post.title}}</p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="category-tag card">
+            <h2>Category Tags</h2>
+            <div class="button-cuz">
+              {% for categories in cat_list %}
+              <button type="button" class="btn btn-outline-dark">{{categories}}</button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    
+    
+    
+ 
+    
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
