@@ -17,8 +17,8 @@
     <nav class="navbar navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand">Django Blog</a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="{% url 'search' %}" method="GET">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{request.GET.q}}">
           <button class="btn btn-dark" type="submit">Search</button>
         </form>
       </div>
