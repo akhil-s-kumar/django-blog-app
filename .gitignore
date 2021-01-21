@@ -2,5 +2,6 @@
 db.sqlite3
 venv/
 
-.idea/
-uploaded_media/
+__pycache__
+migrations
+Media
