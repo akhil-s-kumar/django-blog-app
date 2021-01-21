@@ -26,4 +26,24 @@
     </div>
 </div>
 {% endif %}
+
+<nav aria-label="...">
+  <ul class="pagination">
+    {% if posts.has_previous %}
+      <li class="page-item"><a class="page-link" style="color:black" href="?page=1"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{ posts.previous_page_number }}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+    {% endif %}
+    {% for num in posts.paginator.page_range %}
+      {% if num == posts.number %}
+        <li class="page-item active"><a class="page-link" style="color:#ffffff; background-color: black; border-color: black;" href="?page={{num}}">{{num}}</a></li>
+      {% elif num > posts.number|add:'-2' and num < posts.number|add:'2' %}
+        <li class="page-item"><a class="page-link" style="color:black" href="?page={{num}}">{{num}}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{posts.next_page_number}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{ posts.paginator.num_pages }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+    {% endif %}
+  </ul>
+</nav>
 {% endblock %}
