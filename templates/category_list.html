@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for post in category_posts %}
+<div class="card">
+  <img src="{{post.img.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <ul class="post-meta" style="list-style-type: none; padding-left: 0px;">
+      <li><i class="fa fa-tag"></i><a>{{post.category}}</a></li>
+      <li><i class="fa fa-comment"></i><a>5 Comments</a></li>
+      <li><i class="fa fa-user"></i><a>Post By {{post.author.first_name}}</a></li>
+      <li><i class="fa fa-clock-o"></i><a>{{post.post_date | date:'d F'}}</a></li>
+    </ul>
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body | slice:':250' | safe}}...</p>
+    <button type="button" class="btn btn-lg btn-dark">Read More</button>
+  </div>
+</div>
+{% endfor %}
+
+<nav aria-label="...">
+  <ul class="pagination">
+    {% if category_posts.has_previous %}
+      <li class="page-item"><a class="page-link" style="color:black" href="?page=1"><i class="fa fa-arrow-left" aria-hidden="true"></i></a></li>
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{ category_posts.previous_page_number }}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+    {% endif %}
+    {% for num in category_posts.paginator.page_range %}
+      {% if num == category_posts.number %}
+        <li class="page-item active"><a class="page-link" style="color:#ffffff; background-color: black; border-color: black;" href="?page={{num}}">{{num}}</a></li>
+      {% elif num > category_posts.number|add:'-2' and num < category_posts.number|add:'2' %}
+        <li class="page-item"><a class="page-link" style="color:black" href="?page={{num}}">{{num}}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if category_posts.has_next %}
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{category_posts.next_page_number}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+      <li class="page-item"><a class="page-link" style="color:black" href="?page={{ category_posts.paginator.num_pages }}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+{% endblock %}
