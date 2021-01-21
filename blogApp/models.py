@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, date
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Categories(models.Model):
@@ -15,7 +16,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=255, null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='blog', null=True)
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Categories, null=True, on_delete=models.PROTECT, related_name='category_set')
 
