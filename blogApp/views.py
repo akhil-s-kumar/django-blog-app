@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post, Categories
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -48,3 +48,15 @@ def CategoryView(request, cats):
       return render(request, 'category_list.html', {'cats':cats, 'category_posts':category_posts, 'cat_list': cat_list, 'latestpost_list':latestpost_list})
    else:
       raise Http404
+
+class blogdetail(DetailView):
+   model = Post
+   template_name = 'blog_detail.html'
+
+   def get_context_data(self, *args, **kwargs):
+      cat_list = Categories.objects.all()
+      latestpost_list = Post.objects.all().order_by('-post_date')[:3]
+      context = super(blogdetail, self).get_context_data(*args, **kwargs)
+      context["cat_list"] = cat_list
+      context["latestpost_list"] = latestpost_list
+      return context
