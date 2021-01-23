@@ -2,6 +2,7 @@
 ![blog-app-cover](https://github.com/akhil-s-kumar/django-blog-app/blob/master/Screenshots/Home-Screen.png?raw=true)
 # Full Featured Blogging Web App
 
+https://img.shields.io/github/issues/akhil-s-kumar/django-blog-app 	https://img.shields.io/github/forks/akhil-s-kumar/django-blog-app https://img.shields.io/github/stars/akhil-s-kumar/django-blog-app 
 
 This Blogging web application project is purely made with Django as the backend and Bootstrap as the frontend.
 
@@ -40,6 +41,7 @@ Make sure you are in `env` and then do the following each at a time.
 
 ```bash
 (env)$ python manage.py makemigrations
+(env)$ python manage.py makemigrations blogApp
 (env)$ python manage.py migrate
 (env)$ python manage.py createsuperuser
 (env)$ python manage.py runserver
