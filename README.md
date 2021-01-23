@@ -95,6 +95,11 @@ Users can edit Profile Image, First Name, Last Name, Email id, username, passwor
 * **Language:**  Python 3.7
 * **Framework:** Django 3.1.5
 
+## Latest Fixes
+
+1. Slug Field made mandatory
+2. Dynamic Title Tag for Blog Details
+
 ## How you can contribute to this project?
 
 1. Fork this project to your GitHub account
