@@ -5,6 +5,8 @@
 <p align="left">
     <a href="https://github.com/akhil-s-kumar/django-blog-app/issues" alt="Issues">
         <img src="https://img.shields.io/github/issues/akhil-s-kumar/django-blog-app" /></a>
+    <a href="https://github.com/akhil-s-kumar/django-blog-app/pulls" alt="Pull Requests">
+        <img src="https://img.shields.io/github/issues-pr/akhil-s-kumar/django-blog-app" /></a>
     <a href="https://github.com/akhil-s-kumar/django-blog-app/network/members" alt="Forks">
         <img src="https://img.shields.io/github/forks/akhil-s-kumar/django-blog-app" /></a>
     <a href="https://github.com/akhil-s-kumar/django-blog-app/stargazers" alt="Stars">
