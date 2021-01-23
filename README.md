@@ -2,6 +2,8 @@
 ![blog-app-cover](https://github.com/akhil-s-kumar/django-blog-app/blob/master/Screenshots/Home-Screen.png?raw=true)
 # Full Featured Blogging Web App
 
+<img src="https://img.shields.io/github/issues/akhil-s-kumar/django-blog-app">
+
 This Blogging web application project is purely made with Django as the backend and Bootstrap as the frontend.
 
 ## Installation Instructions
