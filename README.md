@@ -97,7 +97,7 @@ Users can edit Profile Image, First Name, Last Name, Email id, username, passwor
 
 ## Latest Fixes
 
-1. Slug Field made mandatory
+1. Added Unique Slug Generator based on Title
 2. Dynamic Title Tag for Blog Details
 
 ## How you can contribute to this project?
