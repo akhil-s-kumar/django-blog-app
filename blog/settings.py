@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'graphene_django',
     'blogApp.apps.BlogappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'blog.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
