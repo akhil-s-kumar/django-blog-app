@@ -25,13 +25,14 @@ SECRET_KEY = 'jqx3e+sq2(sja+kuxr6(t5oijbe6(9jaf!1ieat0raf0nb&w=w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'graphene_django',
+    'users.apps.UsersConfig',
     'blogApp.apps.BlogappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
