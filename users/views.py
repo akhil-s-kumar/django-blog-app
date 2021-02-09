@@ -40,7 +40,7 @@ def login(request):
             return redirect('blog')
         else:
             messages.info(request, 'Invalid Credentials!')
-            return render('.')
+            return redirect('.')
     else:
         return render(request, 'login.html')
 
