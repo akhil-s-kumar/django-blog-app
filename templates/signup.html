@@ -32,6 +32,9 @@
     </div>
     <button style='margin-top:20px' type="submit" class="btn btn-dark">Submit</button>
 </form>
+{% for message in messages %}
+	<h5 style="margin-top: 10px; color:red">{{message}}</h5>
+{% endfor %}
 {% endblock %}
 
 {% block sidebar %}
