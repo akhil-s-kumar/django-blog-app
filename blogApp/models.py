@@ -2,10 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, date
 from ckeditor.fields import RichTextField
+from django.db.models.base import Model
 from django.db.models.signals import pre_save
 from blog.utils import unique_slug_generator
 
 # Create your models here.
+class PostComment(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.sender.get_username()}'
+
 class Categories(models.Model):
     categoryname = models.CharField(max_length=255)
 
@@ -19,6 +28,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='blog', null=True)
     body = RichTextField(blank=False, null=True)
+    comments = models.ManyToManyField(PostComment, null=True, blank=True)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Categories, null=True, on_delete=models.PROTECT, related_name='category_set')
 
