@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.http.response import HttpResponse
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView
-from .models import Post, Categories
+from .models import Post, Categories, PostComment
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponseNotFound, Http404
 
@@ -60,3 +62,12 @@ class blogdetail(DetailView):
       context["cat_list"] = cat_list
       context["latestpost_list"] = latestpost_list
       return context
+
+@login_required(login_url='/login')
+def send_comment(request):
+   message = request.POST.get('message')
+   post_id = request.POST.get('post_id')
+   post_comment = PostComment.objects.create(sender=request.user, message=message)
+   post = Post.objects.filter(id=post_id).first()
+   post.comments.add(post_comment)
+   return redirect('/')

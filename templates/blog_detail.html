@@ -16,4 +16,22 @@
     <p class="card-text">{{post.body | safe}}</p>
   </div>
 </div>
+
+
+
+{% if not request.user.is_authenticated %}
+<div class="alert alert-danger">To comment, first <a href="/login">log in</a> to your account</div>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+  <div class="card">
+    <form action="/send-comment" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="post_id" value="{{ post.id }}">
+      <textarea name="message" cols="120" rows="10"></textarea>
+      <button type="submit" class="btn btn-lg btn-dark">Send Comment</button>
+    </form>
+  </div>
+{% endif %}
+
 {% endblock %}
