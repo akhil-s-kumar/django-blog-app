@@ -7,7 +7,7 @@
   <div class="card-body">
     <ul class="post-meta" style="list-style-type: none; padding-left: 0px;">
       <li><i class="fa fa-tag"></i><a>{{post.category}}</a></li>
-      <li><i class="fa fa-comment"></i><a>5 Comments</a></li>
+      <li><i class="fa fa-comment"></i><a>{{ post.comments.all.count }}</a></li>
       <li><i class="fa fa-user"></i><a>Post By {{post.author.first_name}}</a></li>
       <li><i class="fa fa-clock-o"></i><a>{{post.post_date | date:'d F'}}</a></li>
     </ul>
