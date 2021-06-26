@@ -34,4 +34,15 @@
   </div>
 {% endif %}
 
+<div class="card">
+  {% for comment in post.comments.all %}
+  <div class="alert alert-success">
+    <h4>sent By <strong>{{ comment.sender.get_username }}</strong></h4>
+    <p>message: <strong>{{ comment.message }}</strong></p>
+  </div>
+  {% empty %}
+    <div class="alert alert-danger">There is no comment</div>
+  {% endfor %}
+</div>
+
 {% endblock %}
