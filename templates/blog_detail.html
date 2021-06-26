@@ -8,7 +8,7 @@
   <div class="card-body">
     <ul class="post-meta" style="list-style-type: none; padding-left: 0px;">
       <li><i class="fa fa-tag"></i><a>{{post.category}}</a></li>
-      <li><i class="fa fa-comment"></i><a>{{ post.comments.all.count }}</a></li>
+      <li><i class="fa fa-comment"></i><a>{{ post.comments.all.count }} Comments</a></li>
       <li><i class="fa fa-user"></i><a>Post By {{post.author.first_name}}</a></li>
       <li><i class="fa fa-clock-o"></i><a>{{post.post_date | date:'d F'}}</a></li>
     </ul>
@@ -25,11 +25,11 @@
 
 {% if request.user.is_authenticated %}
   <div class="card">
-    <form action="/send-comment" method="POST">
+    <form action="{% url 'send_comment' post.slug %}" method="POST">
       {% csrf_token %}
       <input type="hidden" name="post_id" value="{{ post.id }}">
       <textarea name="message" cols="120" rows="10"></textarea>
-      <button type="submit" class="btn btn-lg btn-dark">Send Comment</button>
+      <button type="submit" class="btn btn-lg btn-dark">Add Comment</button>
     </form>
   </div>
 {% endif %}
@@ -37,8 +37,8 @@
 <div class="card">
   {% for comment in post.comments.all %}
   <div class="alert alert-success">
-    <h4>sent By <strong>{{ comment.sender.get_username }}</strong></h4>
-    <p>message: <strong>{{ comment.message }}</strong></p>
+    <h4>Commented by <strong>{{ comment.sender.first_name}}</strong></h4>
+    <p>Comment: <strong>{{ comment.message }}</strong></p>
   </div>
   {% empty %}
     <div class="alert alert-danger">There is no comment</div>
