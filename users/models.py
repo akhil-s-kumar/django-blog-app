@@ -8,3 +8,6 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     bio = models.TextField(default='Edit your Bio!')
     website = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.user.get_username()
