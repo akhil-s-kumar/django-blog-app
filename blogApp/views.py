@@ -64,10 +64,10 @@ class blogdetail(DetailView):
       return context
 
 @login_required(login_url='/login')
-def send_comment(request):
+def send_comment(request, slug):
    message = request.POST.get('message')
    post_id = request.POST.get('post_id')
    post_comment = PostComment.objects.create(sender=request.user, message=message)
    post = Post.objects.filter(id=post_id).first()
    post.comments.add(post_comment)
-   return redirect('/')
+   return redirect('.')
