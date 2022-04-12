@@ -3,17 +3,23 @@
 {% block content %}
 {% for post in posts %}
 <div class="card">
-  <img src="{{post.img.url}}" class="card-img-top" alt="...">
+  <a href="{% url 'blog-detail' post.slug %}">
+    <img src="{{post.img.url}}" class="card-img-top" alt="...">
+  </a>
   <div class="card-body">
     <ul class="post-meta" style="list-style-type: none; padding-left: 0px;">
-      <li><i class="fa fa-tag"></i><a>{{post.category}}</a></li>
-      <li><i class="fa fa-comment"></i><a>{{ post.comments.all.count }} Comments</a></li>
-      <li><i class="fa fa-user"></i><a>Post By {{post.author.first_name}}</a></li>
-      <li><i class="fa fa-clock-o"></i><a>{{post.post_date | date:'d F'}}</a></li>
+      <li><i class="fa fa-tag"></i><a style="margin-right: 10px;">{{post.category}}</a></li>
+      <li><i class="fa fa-comment"></i><a style="margin-right: 10px;">{{ post.comments.all.count }} بۆچوون</a></li>
+      <li><i class="fa fa-user"></i><a style="margin-right: 10px;">لەلایەن {{post.author.first_name}}</a></li>
+      <li><i class="fa fa-clock-o"></i><a style="margin-right: 10px;">{{post.post_date | date:'d F'}}</a></li>
     </ul>
-    <a style="text-decoration:none; color:black" href="{% url 'blog-detail' post.slug %}"><h5 class="card-title">{{post.title}}</h5></a>
+    <a style="text-decoration:none; color:black" href="{% url 'blog-detail' post.slug %}">
+      <h5 class="card-title">{{post.title}}</h5>
+    </a>
     <p class="card-text">{{post.body | slice:':250' | safe}}...</p>
-    <a href="{% url 'blog-detail' post.slug %}"><button type="button" class="btn btn-lg btn-dark">Read More</button></a>
+    <a href="{% url 'blog-detail' post.slug %}"><button type="button" class="btn btn-lg btn-dark"
+        style="float: left;">زیاتر
+        بخوێنەوە</button></a>
   </div>
 </div>
 {% endfor %}

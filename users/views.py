@@ -13,10 +13,10 @@ def register(request):
         password2 = request.POST['password2']
         if password1==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username already taken!')
+                messages.info(request, 'نازناوەکەت بەکارهێنراوە!')
                 return redirect('.')
             elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email already registered!')
+                messages.info(request, 'ئەم ئیمەیلە پێشتر تۆمارکراوە!')
                 return redirect('.')
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
@@ -25,7 +25,7 @@ def register(request):
                 auth.login(request, user)
                 return redirect('blog')
         else:
-            messages.info(request, 'Password not matching!')
+            messages.info(request, 'هەمان تێپەڕوشە نییە!')
             return render('.')
     else:
         return render(request, 'signup.html')
@@ -39,7 +39,7 @@ def login(request):
             auth.login(request, user)
             return redirect('blog')
         else:
-            messages.info(request, 'Invalid Credentials!')
+            messages.info(request, 'زانیارییەکانت نادروستن!')
             return redirect('.')
     else:
         return render(request, 'login.html')
