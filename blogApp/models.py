@@ -8,8 +8,6 @@ from blog.utils import unique_slug_generator
 from django.db import models
 
 
-STATUS = ((0, "ڕەشنووس"), (1, "بڵاوی بکەرەوە"))
-
 
 # Create your models here.
 class PostComment(models.Model):
@@ -36,7 +34,6 @@ class Post(models.Model):
     comments = models.ManyToManyField(PostComment, blank=True)
     post_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Categories, null=True, on_delete=models.PROTECT, related_name='category_set')
-    status = models.IntegerField(choices=STATUS, default=0)
 
 
     def __str__(self):
